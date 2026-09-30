@@ -13,6 +13,7 @@
     "@revenuecat/purchases-capacitor": "^11.2.6"
   },
   "devDependencies": {
-    "@capacitor/cli": "^8.0.0"
-  }
+  "some-package": "...",
+  "typescript": "^5.9.2"
+}
 }
