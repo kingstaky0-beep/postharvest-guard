@@ -21,6 +21,8 @@ jobs:
 
       - name: Install dependencies
         run: npm install
+      - name: Install Capacitor CLI
+        run: npm install --save-dev @capacitor/cli
 
       - name: Add Android platform
         run: npx cap add android
