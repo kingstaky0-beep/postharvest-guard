@@ -10,7 +10,7 @@ const save = () => localStorage.setItem(KEY, JSON.stringify(state));
 const $ = (s) => document.querySelector(s);
 const $$ = (s) => document.querySelectorAll(s);
 
-const RC_ANDROID_KEY = "REPLACE_WITH_REVENUECAT_GOOGLE_PUBLIC_KEY";
+const RC_ANDROID_KEY = "YOUR_TEST_STORE_KEY_HERE";
 const ENTITLEMENT = "pro";
 const PRODUCT = "postharvest_guard_pro_monthly";
 
