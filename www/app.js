@@ -10,14 +10,14 @@ const save = () => localStorage.setItem(KEY, JSON.stringify(state));
 const $ = (s) => document.querySelector(s);
 const $$ = (s) => document.querySelectorAll(s);
 
-const RC_ANDROID_KEY = "YOUR_TEST_STORE_KEY_HERE";
+const RC_ANDROID_KEY = "test_tfgoyIxZlEHEsoTMgvAhozmPmkG";
 const ENTITLEMENT = "pro";
 const PRODUCT = "postharvest_guard_pro_monthly";
 
 async function initRevenueCat() {
   if (
     Capacitor.getPlatform() !== "android" ||
-    RC_ANDROID_KEY.startsWith("REPLACE")
+    RC_ANDROID_KEY.startsWith("test")
   )
     return;
   try {
