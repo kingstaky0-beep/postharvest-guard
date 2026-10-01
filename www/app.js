@@ -30,11 +30,13 @@ async function initRevenueCat() {
 async function buyPro() {
   try {
     const offerings = await Purchases.getOfferings();
-    const pkg =
-      offerings.current?.availablePackages?.find(
-        (p) => p.product.identifier === PRODUCT
-      ) || offerings.current?.availablePackages?.[0];
-    if (!pkg) throw new Error("No offering configured");
+    const pkg = offerings.current?.availablePackages?.find(
+  (p) => p.product.identifier === PRODUCT
+);
+
+if (!pkg) {
+  throw new Error(`Product ${PRODUCT} is not in the current offering`);
+}
     const result = await Purchases.purchasePackage({ aPackage: pkg });
     state.pro = !!result.customerInfo?.entitlements?.active?.[ENTITLEMENT];
     save();
