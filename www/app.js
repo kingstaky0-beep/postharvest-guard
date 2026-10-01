@@ -17,7 +17,7 @@ const PRODUCT = "postharvest_guard_pro_monthly";
 async function initRevenueCat() {
   if (
     Capacitor.getPlatform() !== "android" ||
-    RC_ANDROID_KEY.startsWith("test")
+    RC_ANDROID_KEY.startsWith("REPLACE")
   )
     return;
   try {
