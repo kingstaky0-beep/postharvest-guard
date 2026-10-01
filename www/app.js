@@ -11,7 +11,7 @@ const $ = (s) => document.querySelector(s);
 const $$ = (s) => document.querySelectorAll(s);
 
 const RC_ANDROID_KEY = "test_tfgoyIxZlEHEsoTMgvAhozmPmkG";
-const ENTITLEMENT = "pro";
+const ENTITLEMENT = "postharvest_guard_pro";
 const PRODUCT = "postharvest_guard_pro_monthly";
 
 async function initRevenueCat() {
