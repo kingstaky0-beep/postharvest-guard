@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#173B2F" />
+  <title>PostHarvest Guard</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="app">
+    <header class="topbar">
+      <div>
+        <div class="eyebrow">POST-HARVEST CARE</div>
+        <h1>PostHarvest Guard</h1>
+      </div>
+      <button class="icon-btn" id="proBtn" aria-label="Open Pro">PRO</button>
+    </header>
+
+    <section id="home" class="screen active">
+      <div class="hero-card">
+        <div>
+          <span class="hero-label">TODAY</span>
+          <h2>Protect the harvest.<br/>Record what matters.</h2>
+          <p>Track batches, moisture readings and drying progress—even without internet.</p>
+        </div>
+        <div class="grain-mark">🌾</div>
+      </div>
+
+      <div class="stats-grid">
+        <div class="stat"><strong id="batchCount">0</strong><span>Active batches</span></div>
+        <div class="stat"><strong id="readingCount">0</strong><span>Readings</span></div>
+        <div class="stat"><strong id="dryingCount">0</strong><span>Drying</span></div>
+      </div>
+
+      <div class="section-head"><h3>Quick actions</h3></div>
+      <div class="action-grid">
+        <button class="action-card" data-go="record"><span>＋</span><b>New reading</b><small>Log moisture now</small></button>
+        <button class="action-card" data-go="batches"><span>▣</span><b>New batch</b><small>Track a harvest lot</small></button>
+        <button class="action-card" data-go="guide"><span>◎</span><b>Drying guide</b><small>Use your target range</small></button>
+        <button class="action-card" data-go="reports"><span>↗</span><b>Reports</b><small>Review your records</small></button>
+      </div>
+
+      <div class="tip-card">
+        <span>FIELD NOTE</span>
+        <p>Use a calibrated moisture meter and follow the quality specification required by your buyer or storage method. App guidance is informational.</p>
+      </div>
+    </section>
+
+    <section id="record" class="screen">
+      <div class="screen-title"><button class="back" data-go="home">‹</button><div><span>MEASURE</span><h2>Record moisture</h2></div></div>
+      <form id="readingForm" class="form-card">
+        <label>Crop / commodity<select id="crop"><option>Sesame</option><option>Beni seed</option><option>Maize</option><option>Rice</option><option>Sorghum</option><option>Millet</option><option>Groundnut</option><option>Other</option></select></label>
+        <label>Moisture reading (%)<input id="moisture" type="number" min="0" max="100" step="0.1" placeholder="e.g. 7.8" required></label>
+        <label>Batch name<input id="readingBatch" placeholder="e.g. Sesame Lot A" /></label>
+        <label>Purpose<select id="purpose"><option>Drying check</option><option>Storage check</option><option>Sale / buyer check</option><option>Routine record</option></select></label>
+        <label>Note<textarea id="readingNote" rows="3" placeholder="Optional note about the sample..."></textarea></label>
+        <button class="primary" type="submit">Save reading</button>
+      </form>
+      <div id="readingResult" class="result-card hidden"></div>
+    </section>
+
+    <section id="batches" class="screen">
+      <div class="screen-title"><button class="back" data-go="home">‹</button><div><span>BATCHES</span><h2>Harvest lots</h2></div></div>
+      <form id="batchForm" class="form-card compact">
+        <label>Batch name<input id="batchName" placeholder="e.g. Sesame 2026 - Field 2" required /></label>
+        <label>Commodity<select id="batchCrop"><option>Sesame</option><option>Beni seed</option><option>Maize</option><option>Rice</option><option>Sorghum</option><option>Millet</option><option>Groundnut</option><option>Other</option></select></label>
+        <label>Quantity<input id="quantity" type="number" min="0" step="0.1" placeholder="e.g. 250" /></label>
+        <label>Unit<select id="unit"><option>kg</option><option>bags</option><option>tonnes</option></select></label>
+        <button class="primary" type="submit">Create batch</button>
+      </form>
+      <div id="batchList" class="list"></div>
+    </section>
+
+    <section id="guide" class="screen">
+      <div class="screen-title"><button class="back" data-go="home">‹</button><div><span>QUALITY</span><h2>Drying guide</h2></div></div>
+      <div class="guide-card">
+        <h3>Set the target for your buyer</h3>
+        <p>Moisture limits vary by commodity, buyer specification and storage conditions. Rather than guessing, enter the target required for the batch.</p>
+        <label>My target moisture (%)<input id="target" type="number" min="0" max="100" step="0.1" placeholder="e.g. 7.0" /></label>
+        <button class="primary" id="saveTarget">Save target</button>
+      </div>
+      <div class="guide-card">
+        <h3>Simple drying workflow</h3>
+        <ol><li>Spread grain evenly and protect it from unexpected rain or contamination.</li><li>Mix/turn as appropriate for your drying method.</li><li>Measure representative samples with a suitable meter.</li><li>Record each reading and stop when your target specification is reached.</li><li>Cool and store in clean, dry, protected conditions.</li></ol>
+      </div>
+      <div class="warning"><b>Important:</b> The app does not certify grain quality or guarantee that a moisture value is safe for every storage or sale situation. Follow your buyer, commodity and local food-safety requirements.</div>
+    </section>
+
+    <section id="reports" class="screen">
+      <div class="screen-title"><button class="back" data-go="home">‹</button><div><span>INSIGHTS</span><h2>My records</h2></div></div>
+      <div class="report-hero"><strong id="avgMoisture">—</strong><span>Average recorded moisture</span></div>
+      <div id="recentReadings" class="list"></div>
+      <button class="secondary" id="exportBtn">Export records</button>
+    </section>
+
+    <nav class="bottom-nav">
+      <button class="nav active" data-go="home">⌂<small>Home</small></button>
+      <button class="nav" data-go="record">◉<small>Measure</small></button>
+      <button class="nav" data-go="batches">▣<small>Batches</small></button>
+      <button class="nav" data-go="reports">↗<small>Reports</small></button>
+    </nav>
+  </main>
+
+  <div id="paywall" class="modal hidden"><div class="modal-card"><button class="close" id="closePaywall">×</button><div class="crown">✦</div><h2>PostHarvest Guard Pro</h2><p>Unlock unlimited batches, advanced reports and PDF-ready records.</p><ul><li>Unlimited harvest batches</li><li>Moisture trend history</li><li>Buyer-ready reports</li><li>Priority data backup tools</li></ul><button class="primary" id="purchaseBtn">Unlock Pro</button><button class="text-btn" id="restoreBtn">Restore purchase</button><small class="fine">Purchases are handled by Google Play through RevenueCat.</small></div></div>
+  <script type="module" src="app.js"></script>
+</body>
+</html>
