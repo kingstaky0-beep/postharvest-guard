@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">PostHarvest Guard</string>
+    <string name="title_activity_main">PostHarvest Guard</string>
+    <string name="package_name">com.stackytech.postharvestguard</string>
+    <string name="custom_url_scheme">com.stackytech.postharvestguard</string>
+</resources>
